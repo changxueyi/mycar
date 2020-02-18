@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  */
 @Controller
 public class UserController {
-    @RequestMapping("sys/login")
+    @RequestMapping("/sys/login")
     @ResponseBody
     public R login(@RequestBody UserDTO userDTO){
         System.out.println(userDTO.getUsername());

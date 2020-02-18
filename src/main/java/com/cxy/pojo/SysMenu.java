@@ -3,11 +3,26 @@ package com.cxy.pojo;
 import java.io.Serializable;
 
 public class SysMenu implements Serializable {
+    //菜单id
     private Long menuId;
-
+    //父类id
     private Long parentId;
-
+    //菜单名字
     private String name;
+    //父类名字
+    private String parentName;
+
+    public String getParentName() {
+        return parentName;
+    }
+
+    public void setParentName(String parentName) {
+        this.parentName = parentName;
+    }
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
 
     private String url;
 
@@ -83,5 +98,20 @@ public class SysMenu implements Serializable {
 
     public void setOrderNum(Integer orderNum) {
         this.orderNum = orderNum;
+    }
+
+    @Override
+    public String toString() {
+        return "系统菜单SysMenu{" +
+                "menuId=" + menuId +
+                ", parentId=" + parentId +
+                ", name='" + name + '\'' +
+                ", parentName='" + parentName + '\'' +
+                ", url='" + url + '\'' +
+                ", perms='" + perms + '\'' +
+                ", type=" + type +
+                ", icon='" + icon + '\'' +
+                ", orderNum=" + orderNum +
+                '}';
     }
 }

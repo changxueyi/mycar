@@ -1,8 +1,11 @@
 package com.cxy.dao;
 
+import com.cxy.dto.QueryDTO;
 import com.cxy.pojo.SysMenu;
 import com.cxy.pojo.SysMenuExample;
 import java.util.List;
+import java.util.Queue;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface SysMenuMapper {
@@ -27,4 +30,6 @@ public interface SysMenuMapper {
     int updateByPrimaryKeySelective(SysMenu record);
 
     int updateByPrimaryKey(SysMenu record);
+
+    List<SysMenu> findMenuByPage(QueryDTO query);
 }

@@ -9,7 +9,8 @@ package com.cxy.dto;
 public class UserDTO {
     private String username;
     private String password;
-    private String captcha;//头像
+    //验证码
+    private String captcha;
     private boolean rememberMe;//记住我
 
     public String getUsername() {
