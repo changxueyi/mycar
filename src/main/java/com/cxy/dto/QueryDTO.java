@@ -8,16 +8,15 @@ package com.cxy.dto;
  */
 public class QueryDTO {
     //http://localhost:8080/sys/menu/list?order=asc&limit=10&offset=0
-    //分页开始位置
+    //分页开始位置,比如第一页，offset等于0，当limit等于10，第二页，offset等于10
     private int offset;
-    //分页
+    //每页展示的数量，限制
     private int limit;
-    private String order;
-    //排序的字段
-    private String sort;
+    private String order;//点击菜单id的排序按钮后，自动升序变降序，传给controller
+    //排序的字段，种类，类别
+    private String sort;//后台已设置好
     //搜索，模糊搜索
-    private String search;
-
+    private String search;//默认为null
     public int getOffset() {
         return offset;
     }

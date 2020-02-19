@@ -273,4 +273,18 @@
             order by m.${sort} ${order}
         </if>
     </select>
+    <!--mybatis动态批量删除-->
+    <delete id="deleteMenu" parameterType="java.util.List">
+        delete from sys_menu
+        where
+        menu_id in
+        <foreach collection="list" open="(" close=")" separator="," item="id">
+            #{id}
+        </foreach>
+    </delete>
+    <!--展示编辑菜单树-->
+    <select id="findMenu" resultMap="BaseResultMap">
+        SELECT * from sys_menu where type!=2;
+    </select>
+
 </mapper>

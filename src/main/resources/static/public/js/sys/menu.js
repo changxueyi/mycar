@@ -109,10 +109,12 @@ var vm = new Vue({
             if(menuId == null){
                 return ;
             }
-
+             //使用restful风格，传来一个id，我来进行处理
+            //先get这条记录，这里的get就是先查询出这个数据，再进行处理
             $.get("../sys/menu/info/"+menuId, function(r){
                 vm.showList = false;
                 vm.title = "修改";
+                //点击确定，就会出现内容,再R，中必须有menu的key，value就是数据，这个key，也就是menu的数据
                 vm.menu = r.menu;
 
                 vm.getMenu();
@@ -176,10 +178,10 @@ var vm = new Vue({
                     }
                 }
             };
-
+            saveOrUpdate
             //加载菜单树
             $.get("../sys/menu/select", function(r){
-                //设置ztree的数据
+                //设置ztree的数据,后台返回的结果中需要有menuList，赋值到页面menuTree上，再html中有menuTree
                 ztree = $.fn.zTree.init($("#menuTree"), setting, r.menuList);
 
                 //编辑（update）时，打开tree，自动高亮选择的条目

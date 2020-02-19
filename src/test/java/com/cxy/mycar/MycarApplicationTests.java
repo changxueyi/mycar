@@ -51,7 +51,7 @@ class MycarApplicationTests {
     public void test02() throws JsonProcessingException {
         QueryDTO queryDTO = new QueryDTO();
         queryDTO.setOffset(1);
-        queryDTO.setLimit(2);b
+        queryDTO.setLimit(2);
         queryDTO.setSort("menu_id");
         DataGridResult b =  menuService.findMenu(queryDTO);
         System.out.println();

@@ -12,7 +12,7 @@ public interface SysMenuMapper {
     int countByExample(SysMenuExample example);
 
     int deleteByExample(SysMenuExample example);
-
+    //根据主键id默认进行删除
     int deleteByPrimaryKey(Long menuId);
 
     int insert(SysMenu record);
@@ -32,4 +32,9 @@ public interface SysMenuMapper {
     int updateByPrimaryKey(SysMenu record);
 
     List<SysMenu> findMenuByPage(QueryDTO query);
+    /*批量删除*/
+    int deleteMenu(List<Long> ids);
+    //展示编辑，菜单树
+    List<SysMenu> findMenu();
+
 }
