@@ -33,12 +33,12 @@
   16.使用MockMvc实现了对HTTP请求的模拟， 
       优点:可以不用启动项目就可以直接进行测试 
    TODO
-   17:使用JenKins+gitLab+maven+Tomacat实现自动集成，打包，部署
-   18：使用spirngboot进行微服务搭建
-   19：使用redis分布式缓存的使用
-   20.掌握springcloud微服务组件
-   21:掌握消息中间件RabbitMQ
-   22:熟练使用Docker完成项目部署
+   17:使用JenKins+gitLab+maven+Tomacat实现自动集成，打包，部署  
+   18：使用spirngboot进行微服务搭建  
+   19：使用redis分布式缓存的使用  
+   20.掌握springcloud微服务组件  
+   21:掌握消息中间件RabbitMQ  
+   22:熟练使用Docker完成项目部署  
    
    。。。。。。。。。。
    最后一个阶段：

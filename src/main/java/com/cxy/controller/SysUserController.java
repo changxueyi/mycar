@@ -17,11 +17,11 @@ import java.util.List;
  */
 @Controller
 public class SysUserController {
-/*    @Autowired
+    @Autowired
     private SysUserService sysUserService;
     @RequestMapping("/findAll")
     @ResponseBody
     public List<SysUser> aa(){
         return sysUserService.findAll();
-    }*/
+    }
 }
