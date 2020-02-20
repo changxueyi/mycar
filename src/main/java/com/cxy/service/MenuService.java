@@ -14,5 +14,7 @@ public interface MenuService {
     public R saveMenu(SysMenu sysMenu);
     public R findMenuById(Long menuId);
     public R updateMenu(SysMenu sysMenu);
+    public List<String> findPermsByUserId(Long userId);
+
 
 }

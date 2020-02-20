@@ -13,7 +13,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * @ClassName MenuServiceImpl
@@ -86,5 +89,23 @@ public class MenuServiceImpl implements MenuService {
     public R updateMenu(SysMenu sysMenu) {
         int i = sysMenuMapper.updateByPrimaryKeySelective(sysMenu);
         return i>0?R.ok():R.error("修改失败");
+    }
+
+    @Override
+    public List<String> findPermsByUserId(Long userId) {
+       List<String> permsByUserId =  sysMenuMapper.findPermsByUserId(userId);
+       Set<String> set = new HashSet<String>();
+       for (String s: permsByUserId){
+           if (s!=null&&s.equals("")){
+               //如果有，符号分割
+               String[] split = s.split(",");
+               for (String s1 : split){
+                   set.add(s1);
+               }
+           }
+       }
+        List<String> perms = new ArrayList<>();
+       perms.addAll(set);
+       return perms;
     }
 }

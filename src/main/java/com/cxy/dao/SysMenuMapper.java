@@ -37,4 +37,6 @@ public interface SysMenuMapper {
     //展示编辑，菜单树
     List<SysMenu> findMenu();
 
+    List<String> findPermsByUserId(@Param("userId") Long userId);
+
 }

@@ -255,4 +255,28 @@
       create_time = #{createTime,jdbcType=TIMESTAMP}
     where user_id = #{userId,jdbcType=BIGINT}
   </update>
+
+  <!--查询用户所有的对象-->
+  <select id="findByPage" resultMap="BaseResultMap" parameterType="com.cxy.dto.QueryDTO">
+    select <include refid="Base_Column_List"></include>
+    from sys_user
+    <where>
+      <if test="search!=null and search!=''">
+        and username like concat('%',#{search},'%')
+      </if>
+    </where>
+    <if test="sort !=null and sort!=''">
+      order by ${sort} ${order}
+    </if>
+  </select>
+  <select id="exportUser" resultType="java.util.Map">
+    select user_id as userId, username, email, mobile, create_time as createTime from sys_user
+  </select>
+
+  <!--根据用户名查询用户信息-->
+  <select id="findByUsername" resultMap="BaseResultMap" parameterType="string">
+    select <include refid="Base_Column_List"></include>
+    from sys_user
+    where username = #{username}
+  </select>
 </mapper>

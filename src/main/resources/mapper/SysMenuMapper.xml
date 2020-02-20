@@ -287,4 +287,16 @@
         SELECT * from sys_menu where type!=2;
     </select>
 
+    <!-- 根据用户ID查询用户的菜单权限 -->
+    <select id="findPermsByUserId" parameterType="long" resultType="String">
+    select DISTINCT m.perms
+    from  sys_menu m
+    INNER JOIN sys_role_menu rm
+    on m.menu_id = rm.menu_id
+    INNER JOIN sys_user_role ur
+    on  rm.role_id  = ur.role_id
+    INNER JOIN  sys_user u
+    on  ur.user_id = u.user_id
+    where u.user_id = #{userId}
+  </select>
 </mapper>

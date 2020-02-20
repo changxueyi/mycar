@@ -27,4 +27,6 @@ public interface SysRoleMapper {
     int updateByPrimaryKeySelective(SysRole record);
 
     int updateByPrimaryKey(SysRole record);
+
+    List<String> findRolesByUserId(Long userId);
 }
