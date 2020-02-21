@@ -2,7 +2,7 @@ package com.cxy.dto;
 
 /**
  * @ClassName UserDTO
- * @Description 用户登录的DTO，就是前后天传递数据的中枢
+ * @Description 用户登录的DTO，就是前后天传递数据的中枢,使用dto进行封装
  * @Author changxueyi
  * @Date 2020/2/18 9:46
  */

@@ -1,11 +1,15 @@
 package com.cxy.mycar;
 
 import com.cxy.dao.SysMenuMapper;
+import com.cxy.dao.SysUserMapper;
 import com.cxy.dto.DataGridResult;
 import com.cxy.dto.QueryDTO;
 import com.cxy.pojo.SysMenu;
+import com.cxy.pojo.SysUser;
 import com.cxy.service.MenuService;
+import com.cxy.service.SysUserService;
 import com.cxy.utils.JsonHelper;
+import com.cxy.utils.R;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.junit.jupiter.api.Test;
 import org.junit.platform.commons.logging.Logger;
@@ -16,6 +20,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import javax.sql.DataSource;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 
 
 @SpringBootTest
@@ -26,6 +31,10 @@ class MycarApplicationTests {
     private SysMenuMapper sysMenuMapper;
     @Autowired
     private MenuService menuService;
+    @Autowired
+    private SysUserService sysUserService;
+
+
     private  final Logger logger = LoggerFactory.getLogger(this.getClass());//对象方式初始化Log对象
     @Test
     void contextLoads() throws SQLException {
@@ -56,6 +65,15 @@ class MycarApplicationTests {
         DataGridResult b =  menuService.findMenu(queryDTO);
         System.out.println();
     }
-
+    @Test
+    public void test03(){
+        SysUser a =sysUserService.findByUsername("admin");
+        System.out.println(a.toString());
+    }
+    @Test
+    public void test04(){
+        SysUser s = sysUserService.findByUsername("admin");
+        System.out.println(s.toString());
+    }
 
 }

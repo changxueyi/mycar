@@ -17,5 +17,5 @@ public interface SysUserService {
     */
     public Workbook exportUser();
     //根据用户名查询
-    SysUser findByUsername(String username);
+    public SysUser findByUsername(String username);
 }

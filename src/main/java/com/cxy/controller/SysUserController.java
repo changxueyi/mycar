@@ -2,6 +2,7 @@ package com.cxy.controller;
 
 import com.cxy.pojo.SysUser;
 import com.cxy.service.SysUserService;
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +22,7 @@ public class SysUserController {
     private SysUserService sysUserService;
     @RequestMapping("/findAll")
     @ResponseBody
+    @RequiresRoles("qf")
     public List<SysUser> aa(){
         return sysUserService.findAll();
     }

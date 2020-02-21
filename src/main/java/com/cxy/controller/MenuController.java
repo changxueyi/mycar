@@ -5,6 +5,9 @@ import com.cxy.dto.QueryDTO;
 import com.cxy.pojo.SysMenu;
 import com.cxy.service.MenuService;
 import com.cxy.utils.R;
+import com.cxy.utils.ShiroUtils;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,6 +29,7 @@ public class MenuController {
     private MenuService menuService;
     @RequestMapping("/sys/menu/list")
     @ResponseBody
+    @RequiresPermissions("sys:user:list")
     public DataGridResult findMenu(QueryDTO queryDTO){
         return menuService.findMenu(queryDTO);
     }
@@ -59,5 +63,14 @@ public class MenuController {
     public R updateMenu(@RequestBody SysMenu sysMenu){
         return menuService.updateMenu(sysMenu);
     }
+
+    //动态主表
+    @RequestMapping("/sys/menu/user")
+    @ResponseBody
+    public R userMenu(){
+        long userId = ShiroUtils.getUserId();
+        return menuService.findUserMenu(userId);
+    }
+
 
 }

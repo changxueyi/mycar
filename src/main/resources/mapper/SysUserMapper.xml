@@ -274,7 +274,7 @@
   </select>
 
   <!--根据用户名查询用户信息-->
-  <select id="findByUsername" resultMap="BaseResultMap" parameterType="string">
+  <select id="findByUsername" parameterType="String" resultMap="BaseResultMap">
     select <include refid="Base_Column_List"></include>
     from sys_user
     where username = #{username}

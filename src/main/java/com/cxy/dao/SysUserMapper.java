@@ -35,6 +35,6 @@ public interface SysUserMapper {
     //导出
     List<Map<String,Object>> exportUser();
     //通过用户名查询用户信息
-    SysUser findByUsername(String username);
+    public SysUser findByUsername(@Param("username") String username);
 
 }

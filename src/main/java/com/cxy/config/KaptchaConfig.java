@@ -18,7 +18,7 @@ public class KaptchaConfig {
         Properties properties = new Properties();
         //验证码的设置
         properties.setProperty("kaptcha.border","no");
-        properties.setProperty("kaptcha.textproducer.char.length","1");//验证码个数
+        properties.setProperty("kaptcha.textproducer.char.length","3");//验证码个数
         properties.setProperty("kaptcha.textproducer.font.color","black");//字体颜色
 
         Config config = new Config(properties);

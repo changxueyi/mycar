@@ -13,10 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * @ClassName MenuServiceImpl
@@ -93,19 +90,36 @@ public class MenuServiceImpl implements MenuService {
 
     @Override
     public List<String> findPermsByUserId(Long userId) {
-       List<String> permsByUserId =  sysMenuMapper.findPermsByUserId(userId);
-       Set<String> set = new HashSet<String>();
-       for (String s: permsByUserId){
-           if (s!=null&&s.equals("")){
-               //如果有，符号分割
-               String[] split = s.split(",");
-               for (String s1 : split){
-                   set.add(s1);
-               }
-           }
-       }
+        List<String> permsByUserId = sysMenuMapper.findPermsByUserId(userId);
+        Set<String> set = new HashSet<String>();
+        for (String s : permsByUserId) {
+            if(s!=null&&!s.equals("")){
+                String[] split = s.split(",");
+                for (String s1 : split) {
+                    set.add(s1);
+                }
+            }
+        }
         List<String> perms = new ArrayList<>();
-       perms.addAll(set);
-       return perms;
+        perms.addAll(set);
+        return perms;
     }
+
+
+    @Override
+    public R findUserMenu(Long userId) {
+        //查询用户的一级目录
+        List<Map<String, Object>> dirMenuByUserId = sysMenuMapper.findDirMenuByUserId(userId);
+        //查询目录对应的子菜单
+        for (Map<String, Object> map : dirMenuByUserId) {
+            Long menuId = Long.parseLong(map.get("menuId")+"");
+            List<Map<String, Object>> subList = sysMenuMapper.findMenuNotButtonByUserId(userId, menuId);
+            map.put("list",subList);
+        }
+        List<String> permsByUserId = findPermsByUserId(userId);
+        System.out.println("这是所有的权限"+permsByUserId);
+        System.out.println("这是所有的目录："+dirMenuByUserId);
+        return R.ok().put("menuList",dirMenuByUserId).put("permissions",permsByUserId);
+    }
+
 }
